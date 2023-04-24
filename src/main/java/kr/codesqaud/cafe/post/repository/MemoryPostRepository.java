@@ -22,6 +22,17 @@ public class MemoryPostRepository implements PostRepository {
     }
 
     @Override
+    public Post update(long id, Post post) {
+        posts.put(id, post.create(id));
+        return post;
+    }
+
+    @Override
+    public void delete(long id) {
+        posts.remove(id);
+    }
+
+    @Override
     public Optional<Post> findById(long id) {
         return Optional.ofNullable(posts.get(id));
     }
